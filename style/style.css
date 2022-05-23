@@ -1,0 +1,380 @@
+@import url('https://fonts.googleapis.com/css2?family=Amatic+SC&display=swap');
+
+body {
+    margin: 0;
+    padding: 0;
+    color: #ffffff;
+    font-family: 'amatic sc', sans-serif;
+}
+
+/*Header*/
+
+.header-wrapper{
+    height: 100px;
+    width: 100%;
+    background: linear-gradient( -45deg, #93655b, #20384b, #ea753b, #9099bc);
+    background-size: 400% 400%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    animation: backgroundTransition 8s ease-in-out infinite;
+    position: relative;
+}
+
+h1, h2{
+    text-transform: uppercase;
+    padding: 0;
+    margin-bottom: 5px;
+}
+
+li a, footer a{
+    text-decoration: none;
+    color: white;
+    font-size: 30px;
+    text-shadow: 3px 3px 5px black;
+    padding: 10px 40px;
+    border: 1px solid white;
+    min-width: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: 0.5s cubic-bezier(0.55, 0.025, 0.675, 0.97);
+    margin-bottom: 10px;
+    border-radius: 15px;
+}
+
+li a:hover, footer a:hover{
+    color: black;
+    background-color: white;
+    text-shadow: none;
+}
+
+@keyframes backgroundTransition {
+    0%{
+      background-position: 0% 80%;  
+    }
+    50%{
+        background-position: 80% 100%;
+    }
+    100%{
+        background-position: 0% 90%;
+    }
+}
+
+/*Menu Hamburguer*/
+
+.checkbox-countainer{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.checkbox{
+    height: 100px;
+    width: 100px;
+    position: absolute;
+    top: 0;
+    right: 0;
+    display: flex;
+    justify-content: center;
+    cursor: pointer;
+    z-index: 9999;
+    transition: 400ms ease-in-out 0s;
+}
+
+.trace{
+    width: 50px;
+    height: 2px;
+    background-color: white;
+    position: absolute;
+    border-radius: 4px;
+    transition: 0.5s ease-in-out;
+}
+
+.trace:nth-child(1){
+    top: 26px;
+    transform: rotate(0);
+}
+.trace:nth-child(2){
+    top: 46px;
+    transform: rotate(0);
+}
+.trace:nth-child(3){
+    top: 66px;
+    transform: rotate(0);
+}
+
+#toggle{
+    display: none;
+}
+
+/*Menu*/
+
+.menu{
+    position: absolute;
+    top: 28px;
+    right: 30px;
+    background: transparent;
+    height: 40px;
+    width: 40px;
+    border-radius: 50%;
+    box-shadow: 0px 0px 0px 0px white;
+    z-index: -1;
+    transition: 400ms ease-in-out 0s;
+}
+
+.menu-itens{
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 2;
+    opacity: 0;
+    visibility: hidden;
+    transition: 400ms ease-in-out 0s;
+}
+
+.menu-itens ul{
+    list-style-type: none;
+}
+
+/*Animação Menu*/
+
+#toggle:checked + .checkbox .trace:nth-child(1){
+    transform: rotate(45deg);
+    background-color: black;
+    top: 47px;
+}
+#toggle:checked + .checkbox .trace:nth-child(2){
+    transform: translateX(-100px);
+    width: 30px;
+    visibility: hidden;
+    opacity: 0;
+}
+#toggle:checked + .checkbox .trace:nth-child(3){
+    transform: rotate(-45deg);
+    background-color: black;
+    top: 48px;
+}
+
+#toggle:checked + .checkbox{
+    background-color: rgb(212, 113, 19);
+}
+
+#toggle:checked ~ .menu{
+    box-shadow: 0px 0px 0px 100vmax rgb(212, 113, 19);
+    z-index: 1;
+}
+
+#toggle:checked ~ .menu-itens{
+    visibility: visible;
+    opacity: 1;
+}
+
+/*Cards*/
+
+.countainer{
+    width: 100%;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+    margin: 30px 0;
+}
+
+.card-countainer{
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    width: 90%;
+}
+
+.card{
+    height: 300px;
+    width: 400px;
+    margin: 0px 0px 0 0px ;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    filter: grayscale(0.5);
+    color: white;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.card-text{
+    width: 40%;
+    color: black;
+    font-size: 30px;
+}
+
+.card-text a{
+
+    color: black;
+}
+
+.card-wrapper{
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position:relative;
+}
+
+.card-wrapper::before{
+    content: '';
+    position: absolute;
+    height: 100px;
+    width: 100px;
+    display: block;
+    border: 1px solid white;
+    opacity: 0;
+    transition: 0.3s;
+}
+
+.card-wrapper h2{
+    font-size: 45px;
+    text-transform: uppercase;
+    letter-spacing: 4px;
+    margin: 0;
+    transition: 0.3s;
+    text-shadow: 1px 5px 10px  black;
+}
+
+.card-wrapper p{
+    font-size: 0;
+    visibility: hidden;
+    opacity: 0;
+    font-weight: bold;
+    text-transform: uppercase;
+    transition: 0.3s;
+    text-decoration: none;
+    text-shadow: 1px 5px 10px  black;
+}
+.card:hover{
+    filter: unset;
+}
+
+.card:hover > .card-wrapper::before{
+    height: 250px;
+    width: 350px;
+    opacity: 1;
+}
+
+.card:hover > .card-wrapper p{
+    opacity: 1;
+    visibility: visible;
+    font-size: 30px;
+    color: white;
+    text-shadow: 1px 5px 10px  black;
+}
+
+/*Imagens Cards*/
+
+
+.img-um{
+    background-image: url('../imagens/quarteto_hunter_x_hunter.jpg');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+.img-dois{
+    background-image: url('../imagens/gon_and_killua.jpg');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+.img-tres{
+    background-image: url('../imagens/meruen.png');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+.img-quatro{
+    background-image: url('../imagens/gon.png');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+/*Footer*/
+
+footer{
+    padding-top: 50px;
+    padding-bottom: 50px;
+    width: 100%;
+    height: 100px;
+    background-color: #2E1C2B;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    align-items: center;
+    background: linear-gradient( -45deg, #93655b, #20384b, #ea753b, #9099bc);
+    animation: backgroundTransition 10s ease-in-out infinite;
+    background-size: 400% 400%;
+}
+
+.social{
+    display: flex;
+}
+
+.social a{
+    margin: 5px;
+}
+
+/*Páginas em construção*/
+
+.processocriativo img{
+    width: 100%;
+    height: 350px;
+}
+
+/*Responsive*/
+
+@media (max-width: 800px) {
+    .countainer{
+        margin-top: 0;
+    }
+    .card-countainer{
+        flex-direction: column;
+    }
+
+    .countainer .card-countainer:nth-child(1), .countainer .card-countainer:nth-child(3){
+        flex-direction: column-reverse;
+    }
+    .card{
+        height: 250px;
+        width: 250px;
+    }
+    .card-text{
+        width: 90%;
+        margin-top: 20px;
+        margin-bottom: 50px;
+        text-align: center;
+    }
+
+    .card-wrapper h2{
+        font-size: 30px;
+    }
+
+    .card-wrapper p{
+        font-size: 10px;
+    }
+
+    .card-wrapper::before{
+        border: none;
+    }
+
+    .card:hover > .card-wrapper::before{
+        height: 190px;
+        width: 190px;
+    }
+}
